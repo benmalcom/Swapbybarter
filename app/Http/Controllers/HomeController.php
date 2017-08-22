@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function index()
     {
         $items = Item::with('state','images','category')
-                    ->orderBy('created_at','desc')->take(self::ITEMS_PER_PAGE)->get()->chunk(3);
+                    ->orderBy('created_at','desc')->take(self::ITEMS_PER_PAGE);
         $categories = Category::all();
         $states = State::all();
         return view('frontend.pages.home',compact('items', 'categories','states'));

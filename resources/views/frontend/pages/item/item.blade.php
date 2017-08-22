@@ -7,19 +7,19 @@
         </div>
         <div class="item-meta light-well">
             <div style="position: relative; top: 50%; transform: translateY(-50%); ">
-                <h4 class="text-black">{{ \App\Models\Item::shorten($item->name,23) }}</h4>
+                <h4 class="name text-black">{{ \App\Models\Item::shorten($item->name,23) }}</h4>
                 @if(!empty($item->description))
-                    <p class="text-muted text-sm">{{ \App\Models\Item::shorten($item->description,65) }}</p>
+                    <p class="text-muted text-sm" style="color: #4a7a71;">{{ \App\Models\Item::shorten($item->description,70) }}</p>
                 @else
                     <p class="text-danger">No available description for this item</p>
                 @endif
-                <p class="brand-green"><i class="fa fa-tags"></i> {{ $item->category->name }}</p>
+                <p class="text-muted"><i class="fa fa-tags"></i> {{ $item->category->name }}</p>
             </div>
         </div>
         <hr class="line">
         <div class="row item-action text-center">
             <div class="col-md-6 col-sm-6 p-0">
-                <h6 class="text-muted"><i class="glyphicon glyphicon-map-marker"></i> {{ $item->state->name }}</h6>
+                <h6 class="text-muted"><i class="glyphicon glyphicon-map-marker text-danger"></i> {{ $item->state->name }}</h6>
             </div>
             <div class="col-md-6 col-sm-6 p-0">
                 <h6><span class="text-info"><i class="glyphicon glyphicon-time"></i> {{ $item->created_at->diffForHumans() }}</span></h6>

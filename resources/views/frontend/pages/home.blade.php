@@ -15,7 +15,7 @@
     <div class="container mt-30">
         <div class="row m-0" style="background-color: #9CDBD0; opacity: 0.9;">
             <form method="get" action="{{ url('/search') }}">
-                <div class="col-md-3 pt-10 pb-10">
+                <div class="col-md-3 pt-10 pb-10 col-sm-4">
                     <strong class="pull-left">Search through locality</strong>
                     <div>
                         <select class="form-control simplebox" name="state" data-live-search="true">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 pt-10 pb-10">
+                <div class="col-md-3 pt-10 pb-10 col-sm-4">
                     <strong class="pull-left">Search through category</strong>
                     <div>
                         <select class="form-control simplebox" name="category" data-live-search="true">
@@ -44,14 +44,14 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 pt-10 pb-10">
+                <div class="col-md-4 pt-10 pb-10 col-sm-4">
                     <strong class="pull-left">Search a particular item</strong>
                     <div>
-                        <input type="text" class="form-control simplebox" name="term" placeholder="Search a particular item">
+                        <input type="text" class="form-control" name="term" placeholder="Search a particular item">
                     </div>
                 </div>
 
-                <div class="col-md-2 pt-10 pb-10">
+                <div class="col-md-2 pt-10 pb-10 col-sm-4">
                     <br>
                     <button type="submit" class="btn btn-default btn-block shadow-lite search-btn">Search</button>
                 </div>
@@ -86,7 +86,15 @@
             <!-- slider -->
             <div class="trend-ads">
                 <h2>Trending Ads</h2>
-                <ul id="flexiselDemo3">
+                <div class="row">
+                    @foreach($items as $item)
+                        <div class="col-md-3 col-xs-12 col-sm-4">
+                            @include('frontend.pages.item.item',['item'=>$item])
+                        </div>
+                    @endforeach
+                </div>
+                <div class="clearfix"></div>
+                {{--<div class="flexiselDemo3">
                     <li>
                         <div class="col-md-3 biseller-column">
                             <a href="single.html">
@@ -213,7 +221,7 @@
                             </div>
                         </div>
                     </li>
-                </ul>
+                </div>
                 <script type="text/javascript">
                     $(window).load(function() {
                         $("#flexiselDemo3").flexisel({
@@ -242,7 +250,7 @@
                     });
                 </script>
                 <script type="text/javascript" src="js/jquery.flexisel.js"></script>
-            </div>
+            </div>--}}
         </div>
         <!-- //slider -->
     </div>
