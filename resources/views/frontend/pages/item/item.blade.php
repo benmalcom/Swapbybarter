@@ -9,7 +9,7 @@
             <div style="position: relative; top: 50%; transform: translateY(-50%); ">
                 <h4 class="name text-black">{{ \App\Models\Item::shorten($item->name,23) }}</h4>
                 @if(!empty($item->description))
-                    <p class="text-muted text-sm" style="color: #4a7a71;">{{ \App\Models\Item::shorten($item->description,70) }}</p>
+                    <p class="text-muted text-sm brand-green"><i class="fa fa-info-circle text-muted"></i> {{ \App\Models\Item::shorten($item->description,75) }}</p>
                 @else
                     <p class="text-danger">No available description for this item</p>
                 @endif
