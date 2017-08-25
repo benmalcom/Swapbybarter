@@ -54,7 +54,7 @@ class User extends Authenticatable
     }
 
     public function fullName(){
-        $full_name = $this->email;
+        $full_name = "";
         if(!empty($this->last_name) && !empty($this->first_name)) $full_name =$this->last_name." ".$this->first_name;
         return $full_name;
     }

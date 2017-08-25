@@ -80,12 +80,8 @@ class RegisterController extends Controller
         ]);
 
         $data = ['verification_code'=>$user->verification_code];
-        Mail::send('email.verify',$data, function($message) use ($user) {
-            $message->to($user->email)
-                ->from(env('INFO_EMAIL'))
-                ->subject('Account confirmation code');
-        });
-        /*try{
+
+        try{
             Mail::send('email.verify',$data, function($message) use ($user) {
                 $message->to($user->email)
                     ->from(env('INFO_EMAIL'))
@@ -97,7 +93,7 @@ class RegisterController extends Controller
             // catch code
             Log::error('Registration email send failed');
             Log::info($e->getMessage());
-        }*/
+        }
 
         return $user;
     }

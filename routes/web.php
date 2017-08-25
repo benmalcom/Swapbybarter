@@ -29,7 +29,7 @@ Route::resource('users', 'UserController');
 Route::resource('user-types', 'UserTypeController');
 
 
-Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function () {
+Route::group(['prefix'=>'admin','middleware'=>['auth','full_name','admin']], function () {
     Route::get('dashboard','AdminController@getDashboard');
     Route::get('categories','AdminController@getCategories');
     Route::post('categories','AdminController@postCategories');
@@ -48,7 +48,7 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function () {
     Route::get('transactions','AdminController@getTransactions');
 });
 
-Route::group(['middleware'=>'auth'],function(){
+Route::group(['middleware'=> ['auth','full_name']],function(){
     Route::get('items/swap', 'ItemController@create');
     Route::post('items/swap', 'ItemController@store');
     Route::get('items/{hashed_id}/edit', 'ItemController@edit');
