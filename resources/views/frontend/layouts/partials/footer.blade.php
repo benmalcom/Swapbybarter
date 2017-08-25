@@ -1,10 +1,10 @@
 <footer class="row shadow-lite">
     <div class="footer-top">
             <div class="foo-grids">
-                <div class="col-md-4 footer-grid">
+                <div class="col-md-4 footer-grid p-5">
                     <blockquote><small>For centuries people exchanged goods and services off a barter system; it has only been recently that so much emphasis has been placed on monetary exchanges. If you know what people want then you can always negotiate a deal with them that favors both parties.</small></blockquote>
                 </div>
-                <div class="col-md-4 footer-grid text-center">
+                <div class="col-md-4 footer-grid text-center p-5">
                     <h4 class="footer-head">Help</h4>
                     <ul>
                         <li><a href="{{url('/how-it-works')}}">How it Works</a></li>
@@ -22,7 +22,7 @@
                         <li><a href="privacy.html">Privacy Policy</a></li>
                     </ul>
                 </div>--}}
-                <div class="col-md-4 footer-grid">
+                <div class="col-md-4 footer-grid p-5">
                     <h4 class="footer-head">Contact Us</h4>
                     <span class="hq">Our headquarters</span>
                     <address>

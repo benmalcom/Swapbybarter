@@ -22,10 +22,10 @@
         </div>
         <hr class="line">
         <div class="row item-action text-center">
-            <div class="col-md-6 col-sm-6 p-0">
+            <div class="col-md-6 col-sm-6 col-xs-6 p-0">
                 <h6 class="text-muted"><i class="glyphicon glyphicon-map-marker text-danger"></i> {{ $item->state->name }}</h6>
             </div>
-            <div class="col-md-6 col-sm-6 p-0">
+            <div class="col-md-6 col-sm-6 col-xs-6 p-0">
                 <h6><span class="text-info"><i class="glyphicon glyphicon-time"></i> {{ $item->created_at->diffForHumans() }}</span></h6>
             </div>
 

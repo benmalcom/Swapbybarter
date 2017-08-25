@@ -3,11 +3,6 @@
  */
 
 $(document).ready(function () {
-    $(window).resize(function (e) {
-        var footerHeight = $('footer').css('height');
-        $('body').css('margin-bottom',footerHeight);
-    });
-
     $('input[type="submit"]').click(function (e) {
         $(this).attr("disabled","disabled");
     });

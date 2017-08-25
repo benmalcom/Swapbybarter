@@ -84,7 +84,7 @@ class RegisterController extends Controller
         try{
             Mail::send('email.verify',$data, function($message) use ($user) {
                 $message->to($user->email)
-                    ->from(env('WELCOME_EMAIL'))
+                    ->from(env('INFO_EMAIL'))
                     ->subject('Account confirmation code');
             });
 

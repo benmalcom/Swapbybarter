@@ -3,7 +3,7 @@
 
 <div class="main-banner banner text-center">
     <div class="container-fluid">
-        <h2 class="text-white mb-20">Swap/Exchange   <span class="segment-heading">    any of your valuable items online </span></h2>
+        <h2 class="text-white mb-20 home-text">Swap/Exchange   <span class="segment-heading">    any of your valuable items online </span></h2>
         <a href="{{ url('/items/swap') }}">Start swapping</a>
     </div>
 
