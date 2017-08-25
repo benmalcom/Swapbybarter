@@ -9,7 +9,7 @@
                 <h5 class="text-muted mt-10 mb-10">Update your personal details here. Including your full name.</h5>
                 <div class="row">
 
-                    <div class="col-md-5">
+                    <div class="col-md-5 mb-20">
                         {{--                            <h4 class="text-muted mb-10 mt-10">Profile preview</h4>--}}
                         <div class="shadow pb-10">
                                 <form method="POST" action="{{ url('/profile/avatar') }}" enctype="multipart/form-data">
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-7 mb-20">
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/profile') }}"
                               enctype="multipart/form-data">
 
