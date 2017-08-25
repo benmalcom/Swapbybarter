@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
         //
         if(!\App::runningInConsole()){
             view()->share('hashIds', new Hashids(env('APP_KEY'), 10, env('APP_CHAR')));
-            view()->share('appName', 'SwapByBarter');
+            view()->share('appName', 'Swapbybarter');
             //view()->share('categories', Category::withCount(['items'])->get());
             //view()->share('states', State::all());
         }

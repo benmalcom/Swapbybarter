@@ -51,7 +51,10 @@
     <div class="container mt-30 mb-20">
         @if($items->count() > 0)
             <div class="mb-10 p-20 shadow-lite bg-white">
-                <p class="text-muted">Showing {{ $items->count() }} of {{ $items->total() }} search results for <b>{{ $term }}</b></p>
+                <p class="text-muted">
+                    Showing {{ $items->count() }} of {{ $items->total() }} search results
+                    @if(isset($term))<span> for <b>{{ $term }}</b></span>@endif
+                </p>
             </div>
         @endif
         <div class="clearfix"></div>

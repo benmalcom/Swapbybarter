@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="container mt-40 ">
+    <div class="container mt-20 mb-10">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h2>My account</h2>
@@ -68,19 +68,20 @@
                     </div>
                     <div class="col-md-5">
                         {{--                            <h4 class="text-muted mb-10 mt-10">Profile preview</h4>--}}
-                        <div class="light-well p-10 shadow-lite">
+                        <div class="shadow pb-10">
                                 <form method="POST" action="{{ url('/profile/avatar') }}" enctype="multipart/form-data">
                                     {{ csrf_field() }}
-                                    <div class="center-content">
+                                    <div class="center-content light-well pt-10 pb-10">
                                         <img src="{{ !empty($user->avatar_url)  ?  $user->avatar_url : 'http://placehold.it/380x500'}}"
                                              class="avatar circulate circulate-xlg"
                                              alt="">
                                     </div>
+                                    <div><br></div>
                                     <div>
-                                        <p class="text-center mt-5 mb-5">
+                                        <p class="text-center mb-5">
                                             <label class="btn btn-default btn-xs"><i class="fa fa-camera"></i> Choose
                                                 photo<input type="file" name="avatar"
-                                                            class="hidden avatar-input"></label>
+                                                            class="hidden avatar-input" required></label>
                                             <button type="submit" class="btn btn-custom btn-xs simplebox">
                                                 Upload
                                             </button>
@@ -103,6 +104,7 @@
                 </div>
 
             </div>
+            <div class="clearfix"></div>
         </div>
 
     </div>

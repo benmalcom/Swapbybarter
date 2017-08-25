@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Auth;
 use Mail;
 use Vinkla\Hashids\HashidsManager;
+use Log;
 
 class RegisterController extends Controller
 {
@@ -79,21 +80,20 @@ class RegisterController extends Controller
         ]);
 
         $data = ['verification_code'=>$user->verification_code];
-        Mail::send('email.verify',$data, function($message) use ($user) {
-            $message->to($user->email)
-                ->subject('Account confirmation code');
-        });
 
-        /*try{
-            $data = ['verification_code'=>$user->verification_code,'first_name'=>$user->first_name];
-             Mail::send('email.verify',$data, function($message) use ($user) {
-                 $message->to($user->email)
-                     ->subject('Account confirmation code');
-             });
+        try{
+            Mail::send('email.verify',$data, function($message) use ($user) {
+                $message->to($user->email)
+                    ->from(env('WELCOME_EMAIL'))
+                    ->subject('Account confirmation code');
+            });
+
         }
         catch(\Exception $e){
             // catch code
-        }*/
+            Log::error('Registration email send failed');
+            Log::info($e->getMessage());
+        }
 
         return $user;
     }

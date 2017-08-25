@@ -1,7 +1,7 @@
 @extends('frontend.layouts.default')
 @section('content')
 
-    <div class="col-sm-8 col-sm-offset-2 mt-30 mb-20">
+    <div class="col-sm-8 col-sm-offset-2 mt-20 mb-20">
         <h3>Swap your item</h3>
         <h5 class="mt-10 mb-10 text-danger text-muted">The images cannot be changed later!</h5>
         <form class="form-horizontal" method="post" action="{{url('/items/swap')}}" enctype="multipart/form-data">
@@ -119,7 +119,6 @@
                 <div class="light-well shadow-lite row mt-10 pt-10">
                     @for ($x = 0; $x < 4; $x++)
                         <div class="col-sm-3 upload-container">
-                            <div class="col-sm-12">
                                 <div class="file-upload">
                                     <img class="advert-image product-image-input img-responsive">
                                     <button type="button" class="btn btn-danger remove-img hidden simplebox"
@@ -128,7 +127,6 @@
                                     <input type="file" class="upload product-image-input" name="images[]"
                                            accept="image/*"/>
                                 </div>
-                            </div>
                         </div>
 
                     @endfor

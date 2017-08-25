@@ -48,7 +48,7 @@ class UserController extends Controller
 
     public function getProfile()
     {
-        $user = User::where('id',Auth::id())->withCount('items')->first();
+        $user = User::where('id', Auth::id())->withCount('items')->first();
         return view('frontend.pages.user.profile', compact('user'));
     }
 
@@ -63,44 +63,35 @@ class UserController extends Controller
 
     public function postAvatar(Request $request)
     {
-
         $inputs = $request->all();
         unset($inputs['_token']);
-        if($request->hasFile('avatar'))
-        {
+        if ($request->hasFile('avatar') && $request->avatar->isValid()) {
             $file = $request->file('avatar');
-            if(substr($file->getMimeType(), 0, 5) == 'image') {
-                $ext = $file->getClientOriginalExtension();
-                $avatar_url = Auth::user()->avatar_url;
-                $file_name = Uuid::generate(1).".".$ext;
+            $ext = $file->extension();
+            $avatar_url = Auth::user()->avatar_url;
+            $file_name = Uuid::generate(1) . "." . $ext;
 
-                if($avatar_url) {
-                    $elems = explode("/", $avatar_url);
-                    $file_name = array_pop($elems);
-                }
-                //$file_name = !empty($avatar_url)  ? array_pop(explode("/", $avatar_url)) : Uuid::generate(1).".".$ext;
-                //$image = Image::make($file->getRealPath())->resize(600,500);
-
-
-                $s3 = Storage::disk();
-                $file_path = 'avatars/'.$file_name;
-                //$result = $s3->put($file_path,fopen($file->getRealPath(),'r+'),'public');
-
-                $image = Image::make($file)->fit(self::IMAGE_WIDTH, self::IMAGE_HEIGHT)->stream();
-                $result = $s3->put($file_path, $image->__toString());
-                if($result){
-                    $update['avatar_url'] = $s3->url($file_path);
-                    User::where('id', Auth::id())->update($update);
-                    $this->setFlashMessage("Your avatar has been updated!",1);
-                    return redirect()->back();
-
-                }
+            if ($avatar_url) {
+                $elems = explode("/", $avatar_url);
+                $file_name = array_pop($elems);
+            }
+            $s3 = Storage::disk();
+            $file_path = 'avatars/' . $file_name;
+            $image = Image::make($file->path())->fit(self::IMAGE_WIDTH, self::IMAGE_HEIGHT)->stream();
+            $result = $s3->put($file_path, $image->__toString(), 'public');
+            if ($result) {
+                $update['avatar_url'] = $s3->url($file_path);
+                User::where('id', Auth::id())->update($update);
+                $this->setFlashMessage("Your avatar has been updated!", 1);
+                return redirect()->back();
 
             }
+
 
         }
         return redirect()->back();
     }
+
     public function getChangePassword()
     {
         $user = Auth::user();

@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Item;
 use Mail;
 use App\Models\State;
+use Log;
 
 
 class HomeController extends Controller
@@ -55,11 +56,18 @@ class HomeController extends Controller
     public function postContactUs(Request $request)
     {
         $inputs = $request->all();
-        Mail::send('email.contact', ['message_body'=>$inputs['message_body'], 'name'=>$inputs['name']], function($message) use($inputs) {
-            $message->from($inputs['email'], $inputs['name']);
-            $message->subject("Request For Support");
-            $message->to('benjaminikeji@gmail.com');
-        });
+        try{
+            Mail::send('email.contact', ['message_body'=>$inputs['message_body'], 'name'=>$inputs['name']], function($message) use($inputs) {
+                $message->from($inputs['email'], $inputs['name']);
+                $message->subject("Support/Inquiry email");
+                $message->to(env('SUPPORT_EMAIL'));
+            });
+        }
+        catch (\Exception $e){
+            Log::error('Contact us email send failed');
+            Log::info($e->getMessage());
+        }
+
         if (count(Mail::failures()) > 0) {
             $this->setFlashMessage("An error occurred! PleaSe try again.",1);
         } else {

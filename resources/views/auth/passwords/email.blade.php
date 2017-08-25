@@ -18,9 +18,8 @@
                     {{ csrf_field() }}
 
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <label for="email" class="col-md-3 control-label">E-Mail </label>
 
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             <input id="email" type="email" class="form-control input-lg simplebox" name="email"
                                    value="{{ old('email') }}"
                                    placeholder="Enter your email address" required>
@@ -34,7 +33,7 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
+                        <div class="col-md-12">
                             <button type="submit" class="btn btn-danger input-lg">
                                 Send Password Reset Link
                             </button>

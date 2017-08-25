@@ -1,6 +1,5 @@
-<footer class="shadow-lite">
+<footer class="row shadow-lite">
     <div class="footer-top">
-        <div class="container">
             <div class="foo-grids">
                 <div class="col-md-4 footer-grid">
                     <blockquote><small>For centuries people exchanged goods and services off a barter system; it has only been recently that so much emphasis has been placed on monetary exchanges. If you know what people want then you can always negotiate a deal with them that favors both parties.</small></blockquote>
@@ -39,7 +38,7 @@
                         </ul>
                         <ul class="location">
                             <li><span class="glyphicon glyphicon-envelope"></span></li>
-                            <li><a href="support@tradebybarter.club">support@tradebybarter.club inquiries@tradebybarter.club</a></li>
+                            <li>support@swapbybarter.com inquiries@swapbybarter.com</li>
                             <div class="clearfix"></div>
                         </ul>
                     </address>
@@ -47,7 +46,6 @@
                 <div class="clearfix"></div>
             </div>
         </div>
-    </div>
     <div class="footer-bottom text-center">
         <div class="container">
             <div class="footer-logo">
