@@ -1,4 +1,4 @@
-<footer class="shadow-lite m-0">
+<footer>
     <div class="footer-top">
         <div class="foo-grids">
             <div class="col-md-4 footer-grid text-center">

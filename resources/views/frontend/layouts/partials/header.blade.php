@@ -36,7 +36,13 @@
                             <li @if(Request::path() == "my-items")class="active"@endif>
                                 <a href="{{'/my-items'}}">My Items</a>
                             </li>
-                        <li class="divider"></li>
+
+                        @else
+                            <li>
+                                <div class="p-5 bg-danger text-white">Activate your account</div>
+                            </li>
+                        @endif
+                            <li class="divider"></li>
                             <li>
                                 <a href="{{ route('logout') }}" class="white-on-hover"
                                    onclick="event.preventDefault();
@@ -48,11 +54,6 @@
                                     {{ csrf_field() }}
                                 </form>
                             </li>
-                        @else
-                            <li>
-                                <div class="p-5 bg-danger text-white">Activate your account</div>
-                            </li>
-                        @endif
                     </ul>
                 </div>
             @endif
@@ -82,10 +83,10 @@
             @endif
 
 
-                                <div class="btn-group mt-20 navbar-right navbar-auth-links mr-5">
-                                    <a  class="btn btn-transparent" href="{{url('/items/swap')}}"><i class="fa fa-exchange"></i> Swap your item</a>
+            <div class="btn-group mt-20 navbar-right navbar-auth-links mr-5">
+                <a  class="btn btn-transparent" href="{{url('/items/swap')}}"><i class="fa fa-exchange"></i> Swap your item</a>
 
-                                </div>
+            </div>
 
 
 
