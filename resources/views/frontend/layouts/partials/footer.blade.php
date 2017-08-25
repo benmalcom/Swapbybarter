@@ -1,7 +1,7 @@
-<footer class="shadow-lite">
+<footer class="shadow-lite m-0">
     <div class="footer-top">
         <div class="foo-grids">
-            <div class="col-md-4 footer-grid">
+            <div class="col-md-4 footer-grid text-center">
                 <blockquote>
                     <small>For centuries people exchanged goods and services off a barter system; it has only been
                         recently that so much emphasis has been placed on monetary exchanges. If you know what people
@@ -18,33 +18,23 @@
                     <li><a href="{{url('/contact-us')}}">Contact</a></li>
                 </ul>
             </div>
-                            <div class="col-md-3 footer-grid">
-                                <h4 class="footer-head">Information</h4>
-                                <ul>
-                                    <li><a href="regions.html">Locations Map</a></li>
-                                    <li><a href="terms.html">Terms of Use</a></li>
-                                    <li><a href="popular-search.html">Popular searches</a></li>
-                                    <li><a href="privacy.html">Privacy Policy</a></li>
-                                </ul>
-                            </div>
+{{--            <div class="col-md-3 footer-grid">
+                <h4 class="footer-head">Information</h4>
+                <ul>
+                    <li><a href="regions.html">Locations Map</a></li>
+                    <li><a href="terms.html">Terms of Use</a></li>
+                    <li><a href="popular-search.html">Popular searches</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>--}}
             <div class="col-md-4 footer-grid">
                 <h4 class="footer-head">Contact Us</h4>
                 <span class="hq">Our headquarters</span>
                 <address>
-                    <ul class="location">
-                        <li><span class="glyphicon glyphicon-map-marker"></span></li>
-                        <li class="text-capitalize">Office Address to be available soon.</li>
-                        <div class="clearfix"></div>
-                    </ul>
-                    <ul class="location">
-                        <li><span class="glyphicon glyphicon-earphone"></span></li>
-                        <li>+2348159447655</li>
-                        <div class="clearfix"></div>
-                    </ul>
-                    <ul class="location">
-                        <li><span class="glyphicon glyphicon-envelope"></span></li>
-                        <li>support@swapbybarter.com inquiries@swapbybarter.com</li>
-                        <div class="clearfix"></div>
+                    <ul>
+                        <li><span class="fa fa-map-marker brand-green"></span> Office Address to be available soon.</li>
+                        <li><span class="fa fa-phone brand-green"></span> +2348159447655</li>
+                        <li><span class="fa fa-envelope brand-green"></span> support@swapbybarter.com,  inquiries@swapbybarter.com</li>
                     </ul>
                 </address>
             </div>
