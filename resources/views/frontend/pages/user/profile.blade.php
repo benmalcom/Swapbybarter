@@ -2,9 +2,7 @@
 
 
 @section('content')
-    <div class="container mt-20 mb-10">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-8 col-md-offset-2 mt-20 mb-10">
                 <h2>My account</h2>
                 <h5 class="text-muted mt-10 mb-10">Update your personal details here. Including your full name.</h5>
                 <div class="row">
@@ -106,8 +104,5 @@
 
             </div>
             <div class="clearfix"></div>
-        </div>
-
-    </div>
     <!-- /.container -->
 @endsection
