@@ -95,6 +95,7 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="text-center mt-20"><a href="#" class="btn btn-default btn-lg">Show All Ads</a></div>
+            </div>
         </div>
         <!-- //slider -->
     </div>

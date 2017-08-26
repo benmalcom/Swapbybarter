@@ -34,7 +34,7 @@ class Controller extends BaseController
         $output = '<small>'.
                     '<div class="col-md-6 col-md-offset-3 fade in text-center mt-20 clearfix simplebox alert ' . $class1 . '" id="flash_message">'.
                     /*'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>'.*/
-                        '<i class="' . $class2 . '"></i>' .
+                        '<i class="' . $class2 . '"></i> ' .
                         '<strong>' . $message . '</strong>' .
                     '</div>' .
                     '<div class="clearfix"></div>' .

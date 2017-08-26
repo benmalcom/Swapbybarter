@@ -1075,6 +1075,8 @@ Background colors*/
     max-height: 360px;
     padding: 10px;
     margin-bottom: 20px;
+    position: relative;
+    background-color: transparent;
 }
 .img-parent:hover{
     box-shadow:  0 0 5px #7BAFA5;
@@ -1097,6 +1099,17 @@ Background colors*/
 }
 .light-well{
     background-color: #F5F5F5;
+}
+.edit-item-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0.6;
+}
+
+.bordered-img{
+    border: 2px double #555;
 }
 
 

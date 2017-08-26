@@ -57,12 +57,8 @@ class ItemController extends Controller
     public function store(Request $request, ImageUploader $uploader)
     {
         //
+        $this->validate($request,Item::createRules());
         $inputs = $request->all();
-        $validator = Validator::make($inputs,Item::createRules());
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator);
-        }
-
         $inputs['user_id'] = Auth::id();
         $item = Item::create($inputs);
 
@@ -117,11 +113,8 @@ class ItemController extends Controller
     public function update(Request $request)
     {
         //
+        $this->validate($request,Item::createRules());
         $inputs = $request->all();
-        $validator = Validator::make($inputs,Item::createRules());
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator);
-        }
         $hashed_id =  $inputs['hashed_id'];
         $id = $this->getHashIds()->decode($hashed_id)[0];
         unset($inputs['hashed_id']);
@@ -132,7 +125,7 @@ class ItemController extends Controller
             return redirect('/');
         }
         $this->setFlashMessage("Item details updated",1);
-        return redirect()->back();
+        return redirect('/my-items');
     }
 
     /**

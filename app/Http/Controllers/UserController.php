@@ -28,14 +28,9 @@ class UserController extends Controller
 
     public function postActivateAccount(Request $request)
     {
-
-        $inputs = $request->all();
-        $validator = Validator::make($inputs, ['verification_code' => 'required']);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput($this);
-        }
+        $this->validate($request,['verification_code' => 'required']);
         $user = Auth::user();
-        if ($user->verification_code != $inputs['verification_code']) {
+        if ($user->verification_code != $request->get('verification_code')) {
             $this->setFlashMessage("Incorrect verification code!", 2);
         }
         $user->verification_code = "";
@@ -54,6 +49,9 @@ class UserController extends Controller
 
     public function postProfile(Request $request)
     {
+        if($request->has('mobile')){
+            $this->validate($request,[ 'mobile' => ['required','regex:/^(\+2348|2348|08)[0-1][1-9][0-9]{7}$/']]);
+        }
         $inputs = $request->all();
         unset($inputs['_token']);
         User::where('id', Auth::id())->update($inputs);
@@ -100,15 +98,12 @@ class UserController extends Controller
 
     public function postChangePassword(Request $request)
     {
-        $inputs = $request->all();
-        $validator = Validator::make($inputs, [
+        $this->validate($request,[
             'old_password' => 'required|min:6',
             'password' => 'required|min:6|confirmed'
         ]);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator);
-        }
         $user = Auth::user();
+        $inputs = $request->all();
         if (Hash::check($inputs['old_password'], $user->password)) {
             // The passwords match...
             $user->password = bcrypt($inputs['password']);
@@ -124,9 +119,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $items = Item::where('user_id', $user->id)
-            ->with('category')
-            ->with('images')
-            ->with('state')
+            ->with('category','images','state')
             ->get();
         return view('frontend.pages.user.items', compact('items'));
     }

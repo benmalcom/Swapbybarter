@@ -37,7 +37,7 @@
                     <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
 
                         <div class="col-sm-12">
-                            <input id="email" type="text" class="form-control simplebox input-lg" name="mobile" value="{{ old('mobile') }}" placeholder="Your phone number">
+                            <input id="mobile" type="text" class="form-control simplebox input-lg" name="mobile" value="{{ old('mobile') }}" placeholder="Your phone number">
 
                             @if ($errors->has('mobile'))
                                 <span class="help-block">
