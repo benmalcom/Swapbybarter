@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Review;
+use Auth;
 
 class ReviewController extends Controller
 {
@@ -14,6 +16,8 @@ class ReviewController extends Controller
     public function index()
     {
         //
+        $reviews = Review::with('poster')->orderBy('created_at','desc')->take(10)->get();
+        return view('frontend.pages.reviews',compact('reviews'));
     }
 
     /**
@@ -24,6 +28,8 @@ class ReviewController extends Controller
     public function create()
     {
         //
+        //
+
     }
 
     /**
@@ -35,6 +41,12 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,Review::createRules(), ['body' => 'You cannot submit an empty review']);
+        $inputs = $request->all();
+        $inputs['user_id'] = Auth::id();
+        Review::create($inputs);
+        $this->setFlashMessage("Thank you! Your review has been posted",1);
+        return redirect()->back();
     }
 
     /**

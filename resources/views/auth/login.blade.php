@@ -48,7 +48,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <button type="submit" class="btn btn-danger simplebox input-lg">
+                            <button type="submit" class="btn btn-transparent-success simplebox input-lg">
                                 Sign in
                             </button>
 

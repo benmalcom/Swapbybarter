@@ -8,10 +8,16 @@ class Review extends Model
 {
     //
     protected $fillable = [
-        'body', 'item_id','user_id'
+        'body', 'user_id'
     ];
 
     public function poster(){
         return $this->belongsTo('\App\User','user_id');
+    }
+
+    public static function createRules(){
+        return array(
+            'body' => 'required'
+        );
     }
 }

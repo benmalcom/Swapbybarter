@@ -53,7 +53,7 @@
 
                 <div class="col-md-2 pt-10 pb-10 col-sm-4">
                     <br>
-                    <button type="submit" class="btn btn-default btn-block shadow-lite search-btn">Search</button>
+                    <button type="submit" class="btn btn-custom btn-block shadow-lite search-btn">Search</button>
                 </div>
             </form>
         </div>

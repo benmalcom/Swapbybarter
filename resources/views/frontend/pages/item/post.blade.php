@@ -1,19 +1,19 @@
 @extends('frontend.layouts.default')
 @section('content')
-    <div class="col-sm-8 col-sm-offset-2 mb-20 mt-40">
 
-            <div class="row">
-                <div class="col-sm-6 p-10 pt-20 shadow-lite light-well">
-                    <h3 class="mb-5">Edit item</h3>
+    <div class="col-sm-8 col-sm-offset-2 mt-20 mb-20">
+        <h3>Post your item</h3>
+        <h5 class="mt-10 mb-10 text-danger text-muted">The images cannot be changed later!</h5>
+        <form class="form-horizontal" method="post" action="{{url('/items/swap')}}" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <div class="container-fluid">
+                <div class="p-10 pt-30 shadow-lite light-well row">
 
-                    <form class="form-horizontal" method="post" action="{{url('/items/update')}}" enctype="multipart/form-data">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="hashed_id" value="{{$hashIds->encode($item->id)}}">
-
+                    <div class="col-md-6">
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control simplebox" name="name" value="{{ $item->name }}"
-                                       placeholder="Type the name" autofocus>
+                                <input type="text" class="form-control simplebox" maxlength="22" required name="name"
+                                       value="{{ old('name') }}" placeholder="Type the name" autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -28,7 +28,7 @@
                                 <select class="form-control simplebox" name="category_id" required>
                                     <option value=""> -- Category --</option>
                                     @foreach($categories as $category)
-                                        <option value="{{$category->id}}" @if($item->category_id==$category->id){{"selected"}}@endif> {{ucfirst($category->name)}}</option>
+                                        <option value="{{$category->id}}"> {{ucfirst($category->name)}}</option>
                                     @endforeach
 
                                 </select>
@@ -40,12 +40,29 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group{{ $errors->has('item_condition') ? ' has-error' : '' }}">
 
+                            <div class="col-sm-12">
+                                <select class="form-control simplebox" name="item_condition" required>
+                                    <option value=""> -- Item Condition --</option>
+                                    @foreach(\App\Models\Item::itemConditions() as $condition)
+                                        <option value="{{$condition}}"> {{ucfirst($condition)}}</option>
+                                    @endforeach
+
+                                </select>
+
+                                @if ($errors->has('category_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('category_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                         <div class="form-group{{ $errors->has('exchange') ? ' has-error' : '' }}">
 
                             <div class="col-sm-12">
-                                <input type="text" class="form-control simplebox" value="{{$item->exchange}}"
-                                       name="exchange" placeholder="What are you exchanging it for?" required>
+                                <input type="text" class="form-control simplebox" name="exchange"
+                                       placeholder="What are you exchanging it for?" required>
 
                                 @if ($errors->has('exchange'))
                                     <span class="help-block">
@@ -55,12 +72,11 @@
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('state_id') ? ' has-error' : '' }}">
-
                             <div class="col-sm-12">
                                 <select class="form-control simplebox" name="state_id" required>
                                     <option value=""> -- Select state --</option>
                                     @foreach($states as $state)
-                                        <option value="{{$state->id}}" @if($item->state_id==$state->id){{"selected"}}@endif> {{ucfirst($state->name)}}</option>
+                                        <option value="{{$state->id}}"> {{ucfirst($state->name)}}</option>
                                     @endforeach
 
                                 </select>
@@ -75,8 +91,8 @@
                         <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
 
                             <div class="col-sm-12">
-                                <input type="text" class="form-control simplebox" value="{{$item->address}}"
-                                       name="address" placeholder="Additional address e.g street name">
+                                <input type="text" class="form-control simplebox" name="address"
+                                       placeholder="Additional address e.g street name">
 
                                 @if ($errors->has('address'))
                                     <span class="help-block">
@@ -88,9 +104,8 @@
                         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
 
                             <div class="col-sm-12">
-                                <textarea class="form-control simplebox" name="description"
-                                           placeholder="Describe product(Optional)"
-                                          rows="2">{{$item->description}}</textarea>
+                            <textarea  class="form-control simplebox" name="description"
+                                       placeholder="Describe item(Optional)" rows="3"></textarea>
 
                                 @if ($errors->has('description'))
                                     <span class="help-block">
@@ -99,58 +114,47 @@
                                 @endif
                             </div>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <div class="col-sm-12 mb-5">
-                                <button type="submit" class="btn btn-transparent-success simplebox">
-                                    Submit
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-
-                </div>
-                <div class="col-sm-6">
-                    <form>
-
-                        <div class="row form-group">
-
-                        @if(isset($item->images) && count($item->images) > 0)
-                                @foreach($item->images as $image)
-                                    <div class="col-sm-6 upload-container">
-                                        <div class="col-sm-12">
-                                            <div class="file-upload shadow-lite" style="background-image: url('{{$image->url}}')">
-                                                {{--<img  class="advert-image img-responsive">--}}{{--
-                                                <button type="button" data-bg-image="{{$image->url}}" class="btn btn-danger remove-img hidden simplebox" data-file-index="">x</button>
-                                                <input type="file" class="upload product-image-input" name="images[]" accept="image/*"/>--}}
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                @endforeach
-                            @else
-                                <div class="col-sm-12 col-xs-12">
-                                    <p class="text-danger"><i class="fa fa-times"></i> No image uploaded for this item</p>
+                    <div class="col-md-6">
+                        @for ($x = 0; $x < 4; $x++)
+                            <div class="col-sm-6 col-xs-12 upload-container">
+                                <div class="file-upload">
+                                    <img class="advert-image product-image-input img-responsive">
+                                    <button type="button" class="btn btn-danger remove-img hidden simplebox"
+                                            data-file-index="">x
+                                    </button>
+                                    <input type="file" class="upload product-image-input" name="images[]"
+                                           accept="image/*"/>
                                 </div>
-                            @endif
+                            </div>
 
-                            <div class="clearfix"></div>
+                        @endfor
+                    </div>
 
-                        </div>
-                    </form>
+
                 </div>
-
+                <div class="clearfix"></div>
             </div>
+
             <div class="clearfix"></div>
 
+            <div class="mt-5 mb-5">
+                <button type="submit" class="btn btn-transparent-danger simplebox">
+                    Submit
+                </button>
+            </div>
+
+        </form>
 
     </div>
-    <div class="clearfix"></div>
+
+
+
 
 @endsection
-@section('include-js')
-    <script src="{{asset('/bower_components/jquery-text-counter/textcounter.min.js')}}"></script>
+@push('scripts')
+{{--    <script src="{{asset('/bower_components/jquery-text-counter/textcounter.min.js')}}"></script>
     <script>
         $('input[name="name"]').textcounter({
             max: 22,
@@ -158,5 +162,5 @@
             countSpaces: true,
             countDown: true
         });
-    </script>
-@endsection
+    </script>--}}
+@endpush

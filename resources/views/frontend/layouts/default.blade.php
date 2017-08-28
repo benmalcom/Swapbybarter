@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}"  type="text/css" media="screen" />
     <link rel="stylesheet" href="{{asset('css/flexslider.css')}}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" type="text/css" media="screen" />
+    @stack('styles')
     <link rel="stylesheet" href="{{asset('css/custom.css')}}"  type="text/css" media="screen" />
     <link href="{{asset('css/jquery.uls.css')}}" rel="stylesheet"/>
     <link href="{{asset('css/jquery.uls.grid.css')}}" rel="stylesheet"/>

@@ -73,7 +73,7 @@
 --}}
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <button type="submit" class="btn btn-danger simplebox input-lg">
+                            <button type="submit" class="btn btn-transparent-success simplebox input-lg">
                                 Create account
                             </button>
                             <a class="btn text-muted pull-right" href="{{ url('/login') }}">

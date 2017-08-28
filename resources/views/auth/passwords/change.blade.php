@@ -55,7 +55,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6">
-                                <button type="submit" class="btn btn-danger input-lg">
+                                <button type="submit" class="btn btn-transparent-success input-lg">
                                     Change Password
                                 </button>
                             </div>

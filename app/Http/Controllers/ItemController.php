@@ -45,7 +45,7 @@ class ItemController extends Controller
         //
         $states = State::all();
         $categories = Category::all();
-        return view('frontend.pages.item.add',compact('states','categories'));
+        return view('frontend.pages.item.post',compact('states','categories'));
     }
 
     /**

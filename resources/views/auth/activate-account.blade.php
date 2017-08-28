@@ -24,7 +24,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button type="submit" class="btn btn-danger input-lg simplebox">
+                                    <button type="submit" class="btn btn-transparent-success input-lg simplebox">
                                         Activate
                                     </button>
                                 </div>

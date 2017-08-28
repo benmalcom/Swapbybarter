@@ -19,72 +19,76 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            @if(Auth::check())
-                <div class="btn-group mt-20 navbar-right navbar-auth-links">
-                    <button type="button" class="btn btn-link text-white dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                        My Account <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        @if(Auth::user()->account_verified)
-                            <li @if(Request::path() == "profile")class="active"@endif>
-                                <a href="{{'/profile'}}">My Profile</a>
-                            </li>
-                            <li @if(Request::path() == "password/change")class="active"@endif>
-                                <a href="{{'/password/change'}}"> Change Password</a>
-                            </li>
-                            <li @if(Request::path() == "my-items")class="active"@endif>
-                                <a href="{{'/my-items'}}">My Items</a>
-                            </li>
 
-                        @else
-                            <li>
-                                <div class="p-5 bg-danger text-white">Activate your account</div>
-                            </li>
-                        @endif
-                            <li class="divider"></li>
-                            <li>
-                                <a href="{{ route('logout') }}" class="white-on-hover"
-                                   onclick="event.preventDefault();
-                               document.getElementById('logout-form').submit();">
-                                    <i class="fa fa-power-off"></i> Logout
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                    </ul>
-                </div>
-            @endif
-            @if(Auth::guest())
-                <div class="dropdown navbar-right navbar-nav navbar-auth-links mt-20">
-                    <button class="btn btn-link dropdown-toggle text-white" type="button" id="dropdownMenu1"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        My Account
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li @if(Request::path() == "login")class="active"@endif>
-                            <a href="{{'/login'}}">Login</a>
-                        </li>
-                        <li @if(Request::path() == "register")class="active"@endif>
-                            <a href="{{'register'}}">Register</a>
-                        </li>
-                    </ul>
-                </div>
-            @endif
 
 
             @if( Auth::check() && Auth::user()->isAdmin())
-                <div class="btn-group mt-20 navbar-right navbar-auth-links">
+                <div class="btn-group mt-20 navbar-auth-links">
                     <a class="btn btn-link text-white" href="{{url('/admin/dashboard')}}">Admin</a>
                 </div>
             @endif
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{'/reviews'}}" class="text-white">Reviews</a></li>
+                    <li><a href="{{url('/items/post')}}" class="text-white">Post Your Item</a></li>
+                    @if(Auth::check())
+                        <li class="dropdown">
+                            <a href="#" class="text-white dropdown-toggle" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                My Account <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                @if(Auth::user()->account_verified)
+                                    <li @if(Request::path() == "profile")class="active"@endif>
+                                        <a href="{{'/profile'}}">My Profile</a>
+                                    </li>
+                                    <li @if(Request::path() == "password/change")class="active"@endif>
+                                        <a href="{{'/password/change'}}"> Change Password</a>
+                                    </li>
+                                    <li @if(Request::path() == "my-items")class="active"@endif>
+                                        <a href="{{'/my-items'}}">My Items</a>
+                                    </li>
+
+                                @else
+                                    <li>
+                                        <div class="p-5 bg-danger text-white">Activate your account</div>
+                                    </li>
+                                @endif
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="{{ route('logout') }}" class="white-on-hover"
+                                       onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-power-off"></i> Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle text-white" type="button" id="dropdownMenu1"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                My Account
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li @if(Request::path() == "login")class="active"@endif>
+                                    <a href="{{'/login'}}">Login</a>
+                                </li>
+                                <li @if(Request::path() == "register")class="active"@endif>
+                                    <a href="{{'register'}}">Register</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+                </ul>
 
 
             <div class="btn-group mt-20 navbar-right navbar-auth-links mr-5">
-                <a  class="btn btn-transparent" href="{{url('/items/swap')}}"><i class="fa fa-exchange"></i> Swap your item</a>
+                <a  class="btn btn-transparent" href="{{url('/items/swap')}}"><i class="fa fa-exchange"></i> Swap Now</a>
 
             </div>
 

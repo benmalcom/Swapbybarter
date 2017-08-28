@@ -17,7 +17,6 @@ class CreateReviewsTable extends Migration
             $table->increments('id');
             $table->string('body');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('item_id');
             $table->timestamps();
 
 
@@ -26,10 +25,6 @@ class CreateReviewsTable extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->foreign('item_id')
-                ->references('id')
-                ->on('items')
-                ->onDelete('cascade');
         });
     }
 

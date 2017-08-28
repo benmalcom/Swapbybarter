@@ -58,7 +58,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary input-lg">
+                                <button type="submit" class="btn btn-transparent-success input-lg">
                                     Reset Password
                                 </button>
                             </div>

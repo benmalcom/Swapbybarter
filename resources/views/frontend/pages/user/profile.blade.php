@@ -23,7 +23,7 @@
                                             <label class="btn btn-default btn-xs"><i class="fa fa-camera"></i> Choose
                                                 photo<input type="file" name="avatar"
                                                             class="hidden avatar-input" required></label>
-                                            <button type="submit" class="btn btn-custom btn-xs simplebox">
+                                            <button type="submit" class="btn btn-transparent-success btn-xs simplebox">
                                                 Upload
                                             </button>
                                         </p>
@@ -32,7 +32,7 @@
 
                             {{--                                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />--}}
                             <div class="text-center">
-                                <h3 class="text-muted mt-5 mb-5">{{$user->fullName()}}</h3>
+                                <h4 class="text-muted mt-5 mb-5"><b>{{$user->fullName()}}</b></h4>
                                 <h5 class="mt-5 mb-5">{{$user->email}}</h5>
                                 <h5 class="mt-5 mb-5">{{$user->mobile}}</h5>
                                 <h5 class="mt-5 mb-5">Posted {{$user->items_count}} items</h5>
@@ -92,7 +92,7 @@
                             <div class="col-sm-12">
 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-danger simplebox input-lg">
+                                    <button type="submit" class="btn btn-transparent-danger simplebox input-lg">
                                         Submit
                                     </button>
                                 </div>

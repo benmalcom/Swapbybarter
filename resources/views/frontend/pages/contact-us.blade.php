@@ -1,10 +1,9 @@
 @extends('frontend.layouts.default')
 @section('content')
     <div class="banner text-center">
-        <div class="container">
-            <h1>Sell or Advertise   <span class="segment-heading">    anything online </span> with Resale</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-            <a href="post-ad.html">Post Free Ad</a>
+        <div class="container-fluid">
+            <h2 class="text-white mb-20">Swap/Exchange   <span class="segment-heading">    any of your valuable items online </span></h2>
+            <a href="{{ url('/items/swap') }}">Start swapping</a>
         </div>
     </div>
     <!-- Terms of use -->
