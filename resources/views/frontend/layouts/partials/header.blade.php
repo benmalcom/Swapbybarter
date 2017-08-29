@@ -29,7 +29,7 @@
             @endif
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{'/reviews'}}" class="text-white">Reviews</a></li>
-                    <li><a href="{{url('/items/post')}}" class="text-white">Post Your Item</a></li>
+{{--                    <li><a href="{{url('/items/post')}}" class="text-white">Post Your Item</a></li>--}}
                     @if(Auth::check())
                         <li class="dropdown">
                             <a href="#" class="text-white dropdown-toggle" data-toggle="dropdown"
@@ -88,7 +88,7 @@
 
 
             <div class="btn-group mt-20 navbar-right navbar-auth-links mr-5">
-                <a  class="btn btn-transparent" href="{{url('/items/swap')}}"><i class="fa fa-exchange"></i> Swap Now</a>
+                <a  class="btn btn-transparent" href="{{url('/items/post')}}"><i class="fa fa-exchange"></i> Post your item</a>
 
             </div>
 

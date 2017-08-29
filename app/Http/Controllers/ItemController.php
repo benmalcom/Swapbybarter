@@ -215,4 +215,18 @@ class ItemController extends Controller
         $states = State::all();
         return view('frontend.pages.item.search-results',compact('items','states','categories','term'));
     }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function swap(Request $request)
+    {//
+        $states = State::all();
+        $categories = Category::all();
+        return view('frontend.pages.item.swap',compact('item','categories','states'));
+    }
 }

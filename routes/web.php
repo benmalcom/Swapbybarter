@@ -54,8 +54,6 @@ Route::group(['middleware'=> ['auth','full_name']],function(){
 
 
     Route::post('reviews', 'ReviewController@store');
-/*    Route::get('items/swap', 'ItemController@create');
-    Route::post('items/swap', 'ItemController@store');*/
     Route::get('items/{hashed_id}/edit', 'ItemController@edit');
     Route::get('items/{hashed_id}/delete', 'ItemController@destroy');
     Route::post('items/update', 'ItemController@update');
@@ -71,6 +69,7 @@ Route::group(['middleware'=> ['auth','full_name']],function(){
 });
 
 ////////////////Routes needing no user auth///////////////////////////
+Route::get('items/swap', 'ItemController@swap');
 Route::get('reviews', 'ReviewController@index');
 Route::get('items/{hashed_id}/details', 'ItemController@show');
 Route::get('categories/{hashed_id}/items', 'ItemController@getItemsByCategory');
