@@ -2,7 +2,7 @@
 @section('content')
     <div class="col-md-8 col-md-offset-2 col-xs-12 mt-40">
         <h3>Post a review</h3>
-        <div class="well well-sm text-info mt-20">
+        <div class="shadow-lite p-10 text-info mt-20">
             Reviews, comments or suggestions on how to make {{$appName}} better? We are open to it, let's know what you
             think.
         </div>
@@ -67,7 +67,7 @@
                                                 <div class="timeline-label">
                                                     <h2>
                                                     <a href="#">{{ $review->poster->fullName() }}</a>
-                                                    <span class="pull-right text-sm text-black">
+                                                    <span class="pull-right text-sm text-black block-on-minimize">
                                                     <span>{{ $review->created_at->format('h:i A') }}, </span>
 
                                                     @if($review->created_at->isToday())
