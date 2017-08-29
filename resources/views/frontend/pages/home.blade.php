@@ -4,59 +4,9 @@
 <div class="main-banner banner text-center">
     <div class="container-fluid">
         <div class="container mt-10">
-        <h3 class="text-white mb-20 home-text">{{ $appName }}</h3>
-        <h4 class="mb-20 home-text text-white" style="opacity: 0.8;">No Buy. No Sell. Just Exchange.</h4>
-        <div class="row m-0" style="background-color: #9CDBD0;">
-            <form method="get" action="{{ url('/search') }}">
-                <div class="col-md-3 col-xs-12 pt-10 pb-10 col-sm-4">
-                    <strong class="pull-left">Which item do you have?</strong>
-                    <div>
-                        <input type="text" class="form-control bg-white" style="opacity: 1;" name="item" placeholder="Type your item name">
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-xs-12  pt-10 pb-10 col-sm-4">
-                    <strong class="pull-left">Which item are you searching for?</strong>
-                    <div>
-                        <input type="text" class="form-control bg-white" name="exchange" placeholder="What are you exchanging for?">
-                    </div>
-                </div>
-                <div class="col-md-2 col-xs-12 pt-10 pb-10 col-sm-4">
-                    <strong class="pull-left">Include state?</strong>
-                    <div>
-                        <select class="form-control simplebox bg-white" name="state" data-live-search="true">
-                            <option value="">-- select --</option>
-
-                            @foreach($states as $state)
-                                <option value="{{ $hashIds->encode($state->id) }}">
-                                    {{ $state->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-md-2 col-xs-12 pt-10 pb-10 col-sm-4">
-                    <strong class="pull-left">Include category?</strong>
-                    <div>
-                        <select class="form-control simplebox bg-white" name="category" data-live-search="true">
-                            <option value="">-- select --</option>
-                            @foreach($categories as $category)
-                                <option value="{{ $hashIds->encode($category->id) }}">
-                                    {{ $category->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-
-                <div class="col-md-2 pt-10 pb-10 col-sm-4">
-                    <br>
-                    <button type="submit" class="btn btn-custom btn-block shadow-lite search-btn">Search</button>
-                </div>
-            </form>
-        </div>
+        <h2 class="text-white mb-20 home-text">{{ $appName }}</h2>
+        <h3 class="mb-20 home-text text-white" style="opacity: 0.8;">No Buy. No Sell. Just Exchange.</h3>
+         @include('frontend.layouts.partials.search-bar')
         </div>
 
         {{--        <h2 class="text-white mb-20 home-text">Swap/Exchange   <span class="segment-heading">    any of your valuable items online </span></h2>

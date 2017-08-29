@@ -1,12 +1,7 @@
 @extends('frontend.layouts.default')
 @section('content')
+    @include('frontend.layouts.partials.home-banner')
 
-    <div class="banner text-center">
-        <div class="container-fluid">
-            <h2 class="text-white mb-20">Swap/Exchange   <span class="segment-heading">    any of your valuable items online </span></h2>
-            <a href="{{ url('/items/swap') }}">Start swapping</a>
-        </div>
-    </div>
     <!-- Faq -->
     <div class="faq main-grid-border mt-20">
         <div class="container">

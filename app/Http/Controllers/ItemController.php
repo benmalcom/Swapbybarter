@@ -193,12 +193,18 @@ class ItemController extends Controller
     public function getItemSearchResult(Request $request)
     {
         //
-        $term = $request->get('term','');
-
         $query = Item::orderBy('created_at','desc');
-        if(!empty($term)){
-            $query->where('name', 'LIKE', '%' . $term . '%');
+
+        $item = $request->get('item','');
+        if(!empty($item)){
+            $query->where('exchange', 'LIKE', '%' . $item . '%');
         }
+
+        $exchange = $request->get('exchange','');
+        if(!empty($exchange)){
+            $query->where('name', 'LIKE', '%' . $exchange . '%');
+        }
+
         if($request->has('category')){
             $category_id = $this->getHashIds()->decode($request->get('category'))[0];
             $query->where('category_id', $category_id);
@@ -213,7 +219,8 @@ class ItemController extends Controller
         $items->load('state','images','category','poster');
         $categories = Category::all();
         $states = State::all();
-        return view('frontend.pages.item.search-results',compact('items','states','categories','term'));
+        $params = $request->all();
+        return view('frontend.pages.item.search-results',compact('items','states','categories','params'));
     }
 
 
@@ -223,10 +230,4 @@ class ItemController extends Controller
      * @param  int  $request
      * @return \Illuminate\Http\Response
      */
-    public function swap(Request $request)
-    {//
-        $states = State::all();
-        $categories = Category::all();
-        return view('frontend.pages.item.swap',compact('item','categories','states'));
-    }
 }
