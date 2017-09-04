@@ -25,10 +25,16 @@
         <div class="clearfix"></div>
 
         @if(!$items->count())
-            <div class="bg-danger p-20 mt-20">
-                <strong>No results returned for your search! Define your search properly.</strong>
+            <div class="bg-info shadow-lite p-10 mt-20 col-md-6 col-xs-12 col-lg-6">
+                <strong class="text-muted">No results returned for your search! Define your search properly.</strong>
             </div>
-        @endif
+            <div class="clearfix"></div>
+{{--                <div class="bg-info shadow-lite p-10 mt-20 col-md-6 col-xs-12 col-lg-6">
+                    <p class="text-muted">Can't find what you're looking for?</p>
+                </div>
+                <div class="clearfix"></div>--}}
+
+            @endif
         <div class="clearfix"></div>
 
     </div>

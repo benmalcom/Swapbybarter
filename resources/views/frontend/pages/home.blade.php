@@ -91,7 +91,7 @@
         <div class="container">
             <!-- slider -->
             <div class="trend-ads">
-                <h2>Trending Ads</h2>
+                <h2>Recent Ads</h2>
                 <div class="row">
                     @foreach($items as $item)
                         <div class="col-md-3 col-xs-12 col-sm-4">

@@ -34,7 +34,7 @@
                         <div class="sort">
                             <div class="sort-by">
                                 <label>Sort By : </label>
-                                <select>
+                                <select class="form-control input-sm">
                                     <option value="">Most recent</option>
                                     <option value="">A to Z</option>
                                     <option value="">Random</option>
@@ -53,8 +53,8 @@
                         <div class="clearfix"></div>
 
                     @if(!$items->count())
-                            <div class="bg-danger p-20 mt-20">
-                                <strong>No items available for this category</strong>
+                            <div class="bg-info shadow-lite p-10 mt-20">
+                                <strong class="text-muted">No ad is available for your chosen category</strong>
                             </div>
                         @endif
                             <div>{{ $items->links() }}</div>
