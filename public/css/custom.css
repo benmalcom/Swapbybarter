@@ -1080,7 +1080,7 @@ Background colors*/
     padding: 8px;
     margin-bottom: 20px;
     position: relative;
-    border-top: 2px inset #F5F5F5;
+    border: 2px solid #F5F5F5;
 }
 .img-parent:hover{
     box-shadow:  0 0 4px #7BAFA5;
