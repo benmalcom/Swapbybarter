@@ -3,7 +3,7 @@
 
 <div class="main-banner banner text-center">
     <div class="container-fluid">
-        <div class="container mt-10">
+        <div class="container mt-40">
         <h2 class="text-white mb-20 home-text">Everything you need</h2>
         <h3 class="mb-20 home-text text-white" style="opacity: 0.8;">No Buy. No Sell. Just Exchange.</h3>
          @include('frontend.layouts.partials.search-bar')
