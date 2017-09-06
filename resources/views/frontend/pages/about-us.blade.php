@@ -10,7 +10,7 @@
                 <li class="active">About Us</li>
             </ol>
             <div>
-                <h3>Our Aim</h3>
+                <h3 class="mt-30">Our Aim</h3>
 
                 <p>
                     Have you ever wanted an item, electronic, shoe, cloth, car, office equipment, you name it? Here’s your chance to trade up for those items.

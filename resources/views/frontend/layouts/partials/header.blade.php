@@ -29,7 +29,6 @@
             @endif
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{'/reviews'}}" class="text-white">Reviews</a></li>
-{{--                    <li><a href="{{url('/items/post')}}" class="text-white">Post Your Item</a></li>--}}
                     @if(Auth::check())
                         <li class="dropdown">
                             <a href="#" class="text-white dropdown-toggle" data-toggle="dropdown"
